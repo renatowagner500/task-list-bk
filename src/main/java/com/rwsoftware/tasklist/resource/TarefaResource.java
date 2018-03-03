@@ -12,7 +12,7 @@ import com.rwsoftware.tasklist.model.Tarefa;
 import com.rwsoftware.tasklist.repository.TarefaRepository;
 
 @RestController
-@CrossOrigin("${origem-permitida}")
+@CrossOrigin(origins = {"${origem-local}", "${origem-github}"})
 public class TarefaResource {
 
     @Autowired
