@@ -9,6 +9,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
+@Profile("local")
 public class DataConfiguration {
     
     @Bean
