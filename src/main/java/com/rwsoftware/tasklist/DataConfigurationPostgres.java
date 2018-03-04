@@ -5,33 +5,34 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
-@Profile("mysql")
-public class DataConfiguration {
+@Profile("postgres")
+public class DataConfigurationPostgres {
     
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/eventosapp");
-        dataSource.setUsername("root");
-        dataSource.setPassword("michelli14");
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/springboot");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("admin");
         return dataSource;
     }
     
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
+    public HibernateJpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        adapter.setDatabase(Database.MYSQL);
+        adapter.setDatabase(Database.POSTGRESQL);
         adapter.setShowSql(true);
         adapter.setGenerateDdl(true);
-        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+       // adapter.setDatabasePlatform("org.hibernate.dialect.postgresqldialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL9Dialect");
         adapter.setPrepareConnection(true);
         return adapter;
+        
     }
     
     

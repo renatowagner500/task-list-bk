@@ -6,6 +6,9 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class SituacaoTarefa {
+    public static final Long PENDENTE = 1L;
+    public static final Long CONCLUIDO = 2L;
+    
     
     @Id
     private Long idSituacaoTarefa;
